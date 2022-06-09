@@ -1,0 +1,20 @@
+[out:json][timeout:255];
+rel(2520672); map_to_area->.bnd;
+// gather results
+(
+          nwr[landuse~"industrial|retail|commercial|grass|grassland|allotments|cemetery|meadow|orchard|greenfield|vineyard|village_green|forest|landfill"](area.bnd);
+    nwr[natural~"wood|forest|beach|scrub|fell|heath|moor|grassland|water|bay|wetland"](area.bnd);
+    nwr[leisure~"park|nature|playground|garden|grass|pitch|common|golf_course|dog_park"](area.bnd);
+nwr[amenity=parking][parking!~"underground|multi|rooftop"](area.bnd);
+	nwr[water~"river|lake|pond"](area.bnd);
+		  nwr[waterway~"riverbank|river|stream"](area.bnd);
+);
+// print results
+out body;
+>;
+out skel qt;
+
+
+
+
+way[highway~"motorway|motorway_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|trunk|trunk_link|residential|unclassified"](area.bnd);
